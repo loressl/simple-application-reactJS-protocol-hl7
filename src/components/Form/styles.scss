@@ -1,42 +1,131 @@
 .form-box{
     max-width: auto;
     max-height: auto;
-	display: flex;
+    display: flex;
+    flex: 1 auto;
 	flex-direction: column;
 	padding: 20px 40px;
-	border-radius: 10px;
-    box-shadow: 0px 10px 50px #555;
-	background-color: rgba(238, 223, 223, 0.815);
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: 0px 10px 50px rgb(155, 153, 153);
+	background-color: rgba(255, 255, 255, 0.884);
 }
 
-.form-data{
+// .form-data{
+//     width: auto;
+//     display: flex;
+// 	flex-wrap: wrap;
+//     margin-top: 10px;
+//     padding: 2px;
+// }
+
+// .form-card{
+//     display: flex;
+// }
+
+// .form-card-details{
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .form-card-content{
+//     flex: 1 0 auto;
+// }
+
+// .form-card-controls{
+//     display: flex;
+//     align-items: center;
+//     padding-left: 8px;
+//     padding-bottom: 8px;
+// }
+
+// .form-card-media{
+//     width:150;
+// }
+
+h1{
+    text-align: center;
     width: auto;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
+form{
+    width: 100%;
     display: flex;
-	flex-wrap: wrap;
-    margin-top: 10px;
-    padding: 2px;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
-.form-card{
+.input-form{
+    display: grid;
+    flex-grow: 1;
+    flex-basis: auto;
+    flex-direction: row;
+	margin-bottom: 15px;
+    justify-items: center;
+}
+
+input{
+    padding: 10px 10px;
+    width: 70%;
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid #cfcfcf;
+	&::placeholder {
+		font-size: 1.2em;
+		font-weight: lighter;
+		color: #999;
+	}
+}
+
+section{
     display: flex;
+    margin: 5px;
+    padding: 5px;
 }
 
-.form-card-details{
+article{
+    flex:1 200px;
+    margin: 5px;
+}
+
+
+.card-conf{
     display: flex;
-    flex-direction: column;
+    flex: 1 auto;
 }
 
-.form-card-content{
-    flex: 1 0 auto;
-}
-
-.form-card-controls{
+.horizontal-card{
+    position:relative;
     display: flex;
-    align-items: center;
-    padding-left: 8px;
-    padding-bottom: 8px;
-}
-
-.form-card-media{
-    width:150;
-}
+    border:1px solid gray;
+    background: white;
+    margin-bottom:1rem;
+    img{
+      width: 100px;
+      height: 80px;
+    }
+    .horizontal-card-body{
+      display: flex;
+      flex-direction: column;
+      margin-left:1rem;
+    }
+    .horizontal-card-footer{
+      position:absolute;
+      left:100px;
+      right:0px;
+      bottom:0px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      span{
+        width:150px;
+        display:inline-block;
+      }
+      a{
+        margin-left:10px;
+      }
+    }
+  
+  }
