@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-export default function Input({className, placeholder, type, name}){
+export default function Input({className, placeholder, type, name, handleChange}){
     return(
         <div className="input-form">
             <input 
@@ -9,6 +9,7 @@ export default function Input({className, placeholder, type, name}){
                 placeholder={placeholder}
                 type={type}
                 name={name}
+                onChange={handleChange}
             />
         </div>
     );

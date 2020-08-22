@@ -3,7 +3,29 @@ import './styles.scss';
 import {IconButton } from '@material-ui/core';
 import {ArrowBackIos,ArrowForwardIos} from '@material-ui/icons';
 
-export default function Card({image, title, value, unit}){
+export default function Card({image, title, value, unit,handleChangeSignsVitals}){
+    function handlePrevious(e){
+        var v = parseInt(value);
+        if(v>0)
+            v --;
+        value= v.toString();
+        handleChangeSignsVitals(title.toLowerCase(),value);
+    }
+
+    function handleNext(e){
+        var v = parseInt(value);
+        if(title === 'SpO2'){
+            if(v<100)
+                v ++;
+        }else{
+            if(v<220)
+                v ++;
+        }
+        value= v.toString();
+        handleChangeSignsVitals(title.toLowerCase(),value);
+    }
+
+
     return(
         <div className="card-1">
             <div className="card-product-img">
@@ -15,10 +37,10 @@ export default function Card({image, title, value, unit}){
                     <h2>{value + unit}</h2>
                 </div>
                 <div className="card-product-controls">
-                    <IconButton aria-label="previous">
+                    <IconButton aria-label="previous" onClick={handlePrevious}>
                         <ArrowBackIos/>
                     </IconButton>
-                    <IconButton aria-label="next">
+                    <IconButton aria-label="next" onClick={handleNext}>
                         <ArrowForwardIos />
                     </IconButton>
                 </div>

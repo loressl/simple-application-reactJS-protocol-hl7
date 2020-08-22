@@ -5238,6 +5238,16 @@ history@^4.9.0:
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
 
+hl7-standard@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hl7-standard/-/hl7-standard-1.0.2.tgz#e3edf2d1ac30814ce94ceb67881bb2bfe54ae7dd"
+  integrity sha512-keftyS4asXEFSyKr1a9yaxuHyG1ExovXSNrvE4Br/gVzCoD3wQLRXJ4olxnqE73zYgtaY90tbB66WZ9yEszoUA==
+
+hl7parser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hl7parser/-/hl7parser-1.0.1.tgz#283c47196fbb62c35d46fc8de962cd143791a82c"
+  integrity sha1-KDxHGW+7YsNdRvyN6WLNFDeRqCw=
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
