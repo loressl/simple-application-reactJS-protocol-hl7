@@ -1,13 +1,11 @@
 import React from 'react';
 import './styles.scss';
-import Form from '../../components/Form';
-import Message from '../../components/Message';
+import Simulator from '../../components/Simulator';
 
 export default function Home(){
     return(
         <div className="container-home">
-            <Form />
-            <Message />
+            <Simulator />
         </div>
     );
 }
