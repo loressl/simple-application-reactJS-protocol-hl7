@@ -1,0 +1,20 @@
+.app-footer{
+    display: block;
+    padding: 25px 5px;
+}
+
+.app-footer-span {
+    background: #303f9f;
+    padding: 10px 5px;
+    text-align: center;
+    position: fixed;
+    min-width: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto auto;
+}
+
+.app-footer__message {
+    color: #ffffff;
+    font-family: sans-serif;
+}
