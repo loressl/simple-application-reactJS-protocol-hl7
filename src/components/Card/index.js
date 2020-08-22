@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import {IconButton } from '@material-ui/core';
-import {ArrowBackIos,ArrowForwardIos} from '@material-ui/icons';
+import {ArrowBack,ArrowForward} from '@material-ui/icons';
 
 export default function Card({image, title, value, unit,handleChangeSignsVitals}){
     function handlePrevious(e){
@@ -38,10 +38,10 @@ export default function Card({image, title, value, unit,handleChangeSignsVitals}
                 </div>
                 <div className="card-product-controls">
                     <IconButton aria-label="previous" onClick={handlePrevious}>
-                        <ArrowBackIos/>
+                        <ArrowBack/>
                     </IconButton>
                     <IconButton aria-label="next" onClick={handleNext}>
-                        <ArrowForwardIos />
+                        <ArrowForward />
                     </IconButton>
                 </div>
             </div>

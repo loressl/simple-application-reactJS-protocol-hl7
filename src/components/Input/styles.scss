@@ -3,13 +3,13 @@
     flex-grow: 1;
     flex-basis: auto;
     flex-direction: row;
-      margin-bottom: 15px;
+    margin-bottom: 15px;
     justify-items: left;
     margin-left: 15px;
 }
 
 input{
-  padding: 10px 10px;
+  padding: 12px 10px;
   border-radius: 5px;
   outline: none;
   border: 1px solid #cfcfcf;
@@ -17,5 +17,14 @@ input{
     font-size: 1.2em;
     font-weight: lighter;
     color: #999;
+  }
+  &::-moz-placeholder{
+    font-size:1.2em;
+  }
+  &::-webkit-input-placeholder{
+    font-size:1.2em;
+  }
+  &::-ms-input-placeholder{
+    font-size:1.2em;
   }
 }

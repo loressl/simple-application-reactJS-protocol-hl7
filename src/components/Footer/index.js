@@ -7,7 +7,7 @@ export default function Footer(){
             <div className="app-footer"/>
             <div className="app-footer-span">
                 <span className="app-footer__message">
-                &copy; Lorena Lima
+                &copy; Autora: Lorena Lima
                 </span>
             </div>
         </footer>

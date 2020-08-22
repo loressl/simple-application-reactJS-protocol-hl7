@@ -42,7 +42,7 @@ export default function Form(){
     }
 
     function handleSubmit(e){
-        setMessage(MessageHL7.hl7(values.name, values.lastName, values.diagnostic, 
+        setMessage(MessageHL7.createMessageHl7(values.name, values.lastName, values.diagnostic, 
             signsVitals.spo2, signsVitals.fc))
         e.preventDefault();
       
