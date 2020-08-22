@@ -6,8 +6,8 @@ import Card from '../Card/index';
 import ButtonCommon from '../Button/index';
 import Message from '../Message/index';
 
-import ImgSPO2 from '../../assets/image/spo2.jpg';
-import ImgFC from '../../assets/image/fc.jpg';
+import ImgSPO2 from '../../assets/images/spo2.jpg';
+import ImgFC from '../../assets/images/fc.jpg';
 
 import MessageHL7 from '../../hl7/messageHl7';
 
