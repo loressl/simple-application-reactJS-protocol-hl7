@@ -102,7 +102,7 @@ export default function Form(){
                 name="SUBMIT"
                 handleSubmit={handleSubmit}
             />
-            <h3>Messagem no formato HL7</h3>
+            <h3>Mensagem no formato HL7 versão 2</h3>
             <Message message={message}/>
         </div>
     );
