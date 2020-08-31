@@ -66,8 +66,8 @@ function createMessageHl7(values,signsVitals){
                 'OBX.11':'F'
             }); 
         }else{
-            let hl7_obx2= hl7.createSegmentAfter('OBX', hl7.getSegment('OBX'));
-            hl7_obx2.set('OBX',{
+            let hl7_obx= hl7.createSegmentAfter('OBX', hl7.getSegment('OBX'));
+            hl7_obx.set('OBX',{
                 'OBX.1':'2',
                 'OBX.2':'NM',
                 'OBX.3':{
