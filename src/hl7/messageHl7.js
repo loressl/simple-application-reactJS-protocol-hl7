@@ -1,5 +1,4 @@
 
-
 function createMessageHl7(values,signsVitals){
     const HL7 = require('hl7-standard/index');
 
