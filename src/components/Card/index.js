@@ -14,7 +14,7 @@ export default function Card({image, title, value, unit,handleChangeSignsVitals}
 
     function handleNext(e){
         var v = parseInt(value);
-        if(title === 'SpO2'){
+        if(title === 'spo2'){
             if(v<100)
                 v ++;
         }else{

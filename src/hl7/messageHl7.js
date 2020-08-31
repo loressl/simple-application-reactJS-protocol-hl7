@@ -1,6 +1,6 @@
 
 
-function createMessageHl7(name, lastName, diagnostic, spo2, fc){
+function createMessageHl7(values,signsVitals){
     const HL7 = require('hl7-standard/index');
 
     let hl7= new HL7();
@@ -33,8 +33,8 @@ function createMessageHl7(name, lastName, diagnostic, spo2, fc){
     });
     hl7.createSegment('PID');
     hl7.set('PID.5', {
-        'PID.5.1': lastName,
-        'PID.5.2': name
+        'PID.5.1': values.lastName,
+        'PID.5.2': values.name
     });
     hl7.createSegment('OBR');
     hl7.set('OBR',{
@@ -47,36 +47,41 @@ function createMessageHl7(name, lastName, diagnostic, spo2, fc){
     });
     hl7.createSegment('DG1');
     hl7.set('DG1',{
-        'DG1.4':diagnostic
+        'DG1.4':values.diagnostic
     });
-    hl7.createSegment('OBX');
-    hl7.set('OBX',{
-        'OBX.1':'1',
-        'OBX.2':'NM',
-        'OBX.3':{
-            'OBX.3.2':'SPO2'
-        },
-        'OBX.5':spo2,
-        'OBX.6':{
-            'OBX.6.1':'%'
-        },
-        'OBX.7':'0-100',
-        'OBX.11':'F'
-    });
-    let hl7_obx2= hl7.createSegmentAfter('OBX', hl7.getSegment('OBX'));
-    hl7_obx2.set('OBX',{
-        'OBX.1':'2',
-        'OBX.2':'NM',
-        'OBX.3':{
-            'OBX.3.2':'Frequência Cardiáca'
-        },
-        'OBX.5':fc,
-        'OBX.6':{
-            'OBX.6.1':'bpm'
-        },
-        'OBX.7':'0-220',
-        'OBX.11':'F'
-    });  
+    for(var i=0; i < signsVitals.length; i++){
+        if(i === 0){
+            hl7.createSegment('OBX');
+            hl7.set('OBX',{
+                'OBX.1':'1',
+                'OBX.2':'NM',
+                'OBX.3':{
+                    'OBX.3.2':signsVitals[i].type.toUpperCase()
+                },
+                'OBX.5':signsVitals[i].value,
+                'OBX.6':{
+                    'OBX.6.1':signsVitals[i].unit
+                },
+                'OBX.7': signsVitals[i].range,
+                'OBX.11':'F'
+            }); 
+        }else{
+            let hl7_obx2= hl7.createSegmentAfter('OBX', hl7.getSegment('OBX'));
+            hl7_obx2.set('OBX',{
+                'OBX.1':'2',
+                'OBX.2':'NM',
+                'OBX.3':{
+                    'OBX.3.2':signsVitals[i].type.toUpperCase()
+                },
+                'OBX.5':signsVitals[i].value,
+                'OBX.6':{
+                    'OBX.6.1':signsVitals[i].unit
+                },
+                'OBX.7':signsVitals[i].range,
+                'OBX.11':'F'
+            });  
+        }
+    }
     return hl7.build();
 }
 

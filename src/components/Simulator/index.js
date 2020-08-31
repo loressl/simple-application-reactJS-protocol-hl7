@@ -6,24 +6,19 @@ import Card from '../Card/index';
 import ButtonCommon from '../Button/index';
 import Message from '../Message/index';
 
-import ImgSPO2 from '../../assets/images/spo2.jpg';
-import ImgFC from '../../assets/images/fc.jpg';
-
 import MessageHL7 from '../../hl7/messageHl7';
+import '../../hl7/signsVital';
+import signsVitalsConfig from '../../hl7/signsVital';
 
-export default function Form(){
+export default function Simulator(){
     const initialValues={
         name:'',
         lastName:'',
         diagnostic:''
     }
-    const initialValuesSignsVitals={
-        spo2:'0',
-        fc:'0'
-    }
     const [message, setMessage]= useState('');
     const [values, setValues]= useState(initialValues);
-    const [signsVitals, setSignsVitals] = useState(initialValuesSignsVitals);
+    const [signsVitals, setSignsVitals] = useState(signsVitalsConfig);
 
     function handleChange(e){
         let key= e.target.getAttribute('name');
@@ -31,21 +26,19 @@ export default function Form(){
         setValues({
             ...values,
             [key]:value
-        });
+        }); 
     }
 
     function handleChangeSignsVitals(key,value){
-        setSignsVitals({
-            ...signsVitals,
-            [key]:value
-        })
+        setSignsVitals(signsVitals.map((item) => 
+            item.type === key 
+            ? {...item, value : value} : item
+        ))
     }
 
     function handleSubmit(e){
-        setMessage(MessageHL7.createMessageHl7(values.name, values.lastName, values.diagnostic, 
-            signsVitals.spo2, signsVitals.fc))
+        setMessage(MessageHL7.createMessageHl7(values, signsVitals))
         e.preventDefault();
-      
     }
 
     return(
@@ -76,26 +69,30 @@ export default function Form(){
             />
             <section>
                 <article>
-                    <Card 
-                        image={ImgSPO2}
-                        title='SpO2'
-                        value={signsVitals.spo2}
-                        unit="%"
-                        values={signsVitals}
-                        setValues={setSignsVitals}
-                        handleChangeSignsVitals={handleChangeSignsVitals}
-                    />
+                    {signsVitals.map((item)=>(
+                        item.type === 'spo2' &&
+                        <Card
+                            key={item.type} 
+                            image={item.image}
+                            title={item.type}
+                            value={item.value}
+                            unit={item.unit}
+                            handleChangeSignsVitals={handleChangeSignsVitals}
+                        />
+                    ))}
                 </article>
                 <article>
-                    <Card 
-                        image={ImgFC}
-                        title='FC'
-                        value={signsVitals.fc}
-                        unit="bpm"
-                        values={signsVitals}
-                        setValues={setSignsVitals}
-                        handleChangeSignsVitals={handleChangeSignsVitals}
-                    />
+                    {signsVitals.map((item)=>(
+                        item.type === 'fc' && 
+                        <Card 
+                            key={item.type}
+                            image={item.image}
+                            title={item.type}
+                            value={item.value}
+                            unit={item.unit}
+                            handleChangeSignsVitals={handleChangeSignsVitals}
+                        />
+                    ))}
                 </article>
             </section>
             <ButtonCommon

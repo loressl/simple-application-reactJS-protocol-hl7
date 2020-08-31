@@ -1,15 +1,15 @@
 import React from 'react';
 import './styles.scss';
 
-export default function Input({className, placeholder, type, name, handleChange}){
+export default function Input(props){
     return(
         <div className="input-form">
             <input 
-                className={className}
-                placeholder={placeholder}
-                type={type}
-                name={name}
-                onChange={handleChange}
+                className={props.className}
+                placeholder={props.placeholder}
+                type={props.type}
+                name={props.name}
+                onChange={props.handleChange}
             />
         </div>
     );
