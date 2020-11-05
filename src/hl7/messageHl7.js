@@ -1,7 +1,7 @@
 
 function createMessageHl7(values,signsVitals){
     const HL7 = require('hl7-standard/index');
-
+    
     let hl7= new HL7();
     const timestamp= new Date();
     var day= timestamp.getDate();
@@ -30,13 +30,15 @@ function createMessageHl7(values,signsVitals){
         'MSH.15': '',
         'MSH.16':'AL'
     });
-    hl7.createSegment('PID');
-    hl7.set('PID.5', {
+    let pidSegment = hl7.createSegmentAfter('PID', hl7.getSegment('MSH'));
+    //hl7.createSegment('PID');
+    pidSegment.set('PID.5', {
         'PID.5.1': values.lastName,
         'PID.5.2': values.name
     });
-    hl7.createSegment('OBR');
-    hl7.set('OBR',{
+    let obrSegment = hl7.createSegmentAfter('OBR', hl7.getSegment('PID'));
+    // hl7.createSegment('OBR');
+    obrSegment.set('OBR',{
         'OBR.1':'1',
         'OBR.2':'',
         'OBR.4':{
@@ -44,14 +46,16 @@ function createMessageHl7(values,signsVitals){
             'OBR.4.3':'LN'
         }
     });
-    hl7.createSegment('DG1');
-    hl7.set('DG1',{
+    let dg1Segment = hl7.createSegmentAfter('DG1', hl7.getSegment('OBR'));
+    // hl7.createSegment('DG1');
+    dg1Segment.set('DG1',{
         'DG1.4':values.diagnostic
     });
     for(var i=0; i < signsVitals.length; i++){
         if(i === 0){
-            hl7.createSegment('OBX');
-            hl7.set('OBX',{
+            let obxSegment= hl7.createSegmentAfter('OBX', hl7.getSegment('DG1'));
+            //hl7.createSegment('OBX');
+            obxSegment.set('OBX',{
                 'OBX.1':'1',
                 'OBX.2':'NM',
                 'OBX.3':{
