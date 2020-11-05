@@ -30,6 +30,17 @@ form{
   align-items: stretch;
 }
 
+.fields-parent{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.fields-name{
+  display: flex;
+  flex-direction: row;
+}
+
 .input-name-last-name{
   width: 80%;
 }
