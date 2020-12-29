@@ -37,8 +37,8 @@ export default function Simulator() {
     }
 
     function handleSubmit(e) {
-        setMessage(MessageHL7.createMessageHl7(values, signsVitals))
         e.preventDefault();
+        setMessage(MessageHL7.createMessageHl7(values, signsVitals))
     }
 
     return (

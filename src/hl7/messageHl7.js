@@ -22,8 +22,8 @@ function createMessageHl7(values, signsVitals) {
     writer.addHeader({
         sendingApplication: 'Application WEB',
         sendingFacility: '',
-        receivingApplication: '',
-        receivingFacility: 'Usuário',
+        receivingApplication: 'Usuário',
+        receivingFacility: '',
         dateTimeOfMessage: strData,
         security: '',
         messageType: 'ORM^O01',
